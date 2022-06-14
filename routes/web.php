@@ -17,4 +17,10 @@ Route::get('/', function () {
     return inertia('Welcome', [
         'name' => 'World'
     ]);
-});
+})->name('home');
+
+Route::get('/regergreg', function () {
+    return inertia('Welcome', [
+        'name' => 'World'
+    ]);
+})->name('homee');

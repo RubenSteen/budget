@@ -642,7 +642,7 @@
 
           <div class="ml-auto flex items-center">
             <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-              <a href="#" class="text-sm font-medium text-gray-700 hover:text-gray-800">Sign in</a>
+              <Link :href="route('homee')" class="text-sm font-medium text-gray-700 hover:text-gray-800">Sign in</Link>
               <span class="h-6 w-px bg-gray-200" aria-hidden="true"></span>
               <a href="#" class="text-sm font-medium text-gray-700 hover:text-gray-800">Create account</a>
             </div>
@@ -1041,7 +1041,12 @@
 </template>
 
 <script>
+import { Link } from '@inertiajs/inertia-vue3'
+
 export default {
+  components: {
+    Link
+  },
   props: {
     name: String,
     }
