@@ -1,4 +1,5 @@
 <template>
+    <h1>Hello {{ name }}</h1>
     <ul class="divide-y divide-gray-200">
     <li v-for="person in people" :key="person.email" class="py-4 flex">
       <img class="h-10 w-10 rounded-full" :src="person.image" alt="" />
@@ -44,5 +45,9 @@ export default {
       people,
     }
   },
+
+  props: {
+    name: String,
+    }
 }
 </script>
