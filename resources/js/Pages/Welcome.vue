@@ -1,4 +1,7 @@
 <template>
+  
+  <Head title="Your page title" />
+
     <div class="bg-white">
   <!--
     Mobile menu
@@ -1042,10 +1045,12 @@
 
 <script>
 import { Link } from '@inertiajs/inertia-vue3'
+import { Head } from '@inertiajs/inertia-vue3'
 
 export default {
   components: {
-    Link
+    Link,
+    Head
   },
   props: {
     name: String,
