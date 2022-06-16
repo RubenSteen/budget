@@ -1,6 +1,7 @@
 import { createApp, h } from 'vue'
 import { createInertiaApp, Link, Head } from '@inertiajs/inertia-vue3'
 import { InertiaProgress } from '@inertiajs/progress'
+import DefaultLayout from "@/Shared/Layouts/Default"
 
 InertiaProgress.init({
   // The delay after which the progress bar will
@@ -19,7 +20,14 @@ InertiaProgress.init({
 
 createInertiaApp({
   title: title => `${title} - My App`,
-  resolve: name => require(`./Pages/${name}`),
+
+  // Default Layouts (https://laracasts.com/series/build-modern-laravel-apps-using-inertia-js/episodes/13)
+  resolve: name => {
+    let page = require(`./Pages/${name}`).default;
+    page.layout ??= DefaultLayout;
+    return page;
+  },
+
   setup({ el, App, props, plugin }) {
     createApp({ render: () => h(App, props) })
       .use(plugin)
