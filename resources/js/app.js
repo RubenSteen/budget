@@ -25,7 +25,7 @@ createInertiaApp({
   resolve: name => {
     let page = require(`./Pages/${name}`).default;
     if (page.layout == undefined) {
-      page.layout = DefaultLayout;
+      page.layout = DefaultLayout; //Set it in the view to null if you don't want any layout to be used
     }
     return page;
   },
