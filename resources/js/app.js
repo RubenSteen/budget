@@ -24,7 +24,9 @@ createInertiaApp({
   // Default Layouts (https://laracasts.com/series/build-modern-laravel-apps-using-inertia-js/episodes/13)
   resolve: name => {
     let page = require(`./Pages/${name}`).default;
-    page.layout ??= DefaultLayout;
+    if (page.layout == undefined) {
+      page.layout = DefaultLayout;
+    }
     return page;
   },
 
