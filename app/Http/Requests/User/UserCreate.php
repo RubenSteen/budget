@@ -1,10 +1,10 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class {{ class }} extends FormRequest
+class UserCreate extends FormRequest
 {
         /**
      * Gets the info if the user is authorized to make this request.
@@ -59,7 +59,9 @@ class {{ class }} extends FormRequest
     public static function getRules()
     {
         return [
-            // 'username' => ['required', 'string', 'max:25', 'unique:users'],
+            'username' => ['required', 'string', 'max:25', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];
     }
 
