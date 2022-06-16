@@ -1,7 +1,6 @@
 <template>
-  
-  <Head title="Something else" />
   <Layout>
+    <Head title="Something else" />
     <h2>Welcome</h2>
   </Layout>
 </template>
