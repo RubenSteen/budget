@@ -50,7 +50,7 @@
 
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
 
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+                <Link :href="route('logout')" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</Link>
                 </div>
             </div>
             </div>
@@ -168,14 +168,14 @@
                 <a href="#" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Openings</a>
                 </div>
             </div>
-            <div class="pt-4 pb-2">
+            <div v-if="$page.props.auth" class="pt-4 pb-2">
                 <div class="flex items-center px-5">
                 <div class="flex-shrink-0">
                     <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
                 </div>
                 <div class="ml-3 min-w-0 flex-1">
-                    <div class="text-base font-medium text-gray-800 truncate">Chelsea Hagon</div>
-                    <div class="text-sm font-medium text-gray-500 truncate">chelsea.hagon@example.com</div>
+                    <div class="text-base font-medium text-gray-800 truncate">{{ $page.props.auth.user.username }}</div>
+                    <div class="text-sm font-medium text-gray-500 truncate">{{ $page.props.auth.user.email }}</div>
                 </div>
                 <button type="button" class="ml-auto flex-shrink-0 bg-white p-1 text-gray-400 rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
                     <span class="sr-only">View notifications</span>
@@ -190,7 +190,7 @@
 
                 <a href="#" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Settings</a>
 
-                <a href="#" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Sign out</a>
+                <Link :href="route('logout')" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Sign out</Link>
                 </div>
             </div>
             </div>
@@ -216,16 +216,17 @@
                         </div>
                         <div class="mt-4 text-center sm:mt-0 sm:pt-1 sm:text-left">
                         <p class="text-sm font-medium text-gray-600">Welcome back,</p>
-                        <p class="text-xl font-bold text-gray-900 sm:text-2xl">Chelsea Hagon</p>
-                        <p class="text-sm font-medium text-gray-600">Human Resources Manager</p>
+                        <p class="text-xl font-bold text-gray-900 sm:text-2xl">{{ $page.props.auth ? $page.props.auth.user.username : 'Guest' }}</p>
+                        <p class="text-sm font-medium text-gray-600">{{ $page.props.auth ? $page.props.auth.user.email : 'Feel free to sign in!' }}</p>
                         </div>
                     </div>
                     <div class="mt-5 flex justify-center sm:mt-0">
-                        <a href="#" class="flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"> View profile </a>
+                        <a v-if="$page.props.auth" href="#" class="flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"> View profile </a>
+                        <Link v-else :href="route('login')" class="flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"> Sign in </Link>
                     </div>
                     </div>
                 </div>
-                <div class="border-t border-gray-200 bg-gray-50 grid grid-cols-1 divide-y divide-gray-200 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
+                <div v-if="$page.props.auth" class="border-t border-gray-200 bg-gray-50 grid grid-cols-1 divide-y divide-gray-200 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
                     <div class="px-6 py-5 text-sm font-medium text-center">
                     <span class="text-gray-900">12</span>
                     <span class="text-gray-600">Vacation days left</span>
