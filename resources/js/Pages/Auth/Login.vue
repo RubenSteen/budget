@@ -53,10 +53,14 @@ export default {
 
 <script setup>
 import { useForm } from '@inertiajs/inertia-vue3';
+
+var env = process.env.MIX_APP_ENV;
+
 let form = useForm({
-  email: '',
-  password: '',
+  email: env == 'local' ? 'admin@example.com' : '',
+  password: env == 'local' ? 'password' : '',
 });
+
 let submit = () => {
   form.post('/login');
 };

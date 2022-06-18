@@ -34,7 +34,7 @@ Route::group(['middleware' => ['guest']], function () {
     Route::post('login', [LoginController::class, 'store']);
 
     // Register routes
-    Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('login');
+    Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
     Route::post('register', [RegisterController::class, 'register']);
 });
 
@@ -63,12 +63,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::get('/', function () {
     return inertia('Welcome', [
-        'name' => 'World'
+        'users' => App\Models\User::orderBy('created_at', 'desc')->take(5)->get()
     ]);
 })->name('home');
-
-Route::get('/regergreg', function () {
-    return inertia('Welcome', [
-        'name' => 'World'
-    ]);
-})->name('homee');
