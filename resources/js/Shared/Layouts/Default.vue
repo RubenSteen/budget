@@ -425,6 +425,41 @@
                 </div>
                 </div>
             </section>
+
+                <section aria-labelledby="quick-links-title">
+                    <div class="rounded-lg bg-gray-200 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0">
+                        <h2 class="sr-only" id="quick-links-title">Quick links</h2>
+
+                        <!-- This example requires Tailwind CSS v2.0+ -->
+                        <div class="relative bg-white py-16 sm:py-24 lg:py-32">
+                        <div class="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
+                            <h2 class="text-base font-semibold uppercase tracking-wider text-sky-800">What else do we use?</h2>
+                            <div class="mt-12">
+                            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
+                                <!-- New Tool -->
+                                <div class="pt-6 relative">
+                                <div class="flow-root rounded-lg bg-gray-50 px-6 pb-8">
+                                    <div class="-mt-6">
+                                    <h3 class="mt-8 text-lg font-medium tracking-tight text-gray-900">ZiggyJS</h3>
+                                    <a href="https://github.com/tighten/ziggy" target="_blank" class="focus:outline-none">
+                                        <!-- Extend touch target to entire panel -->
+                                        <span class="absolute inset-0" aria-hidden="true"></span>
+                                    </a>
+                                    <p class="mt-5 text-base text-gray-500">Use your Laravel routes in JavaScript</p>
+                                    </div>
+                                </div>
+                                </div>
+                                <!-- End Tool -->
+
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
+                
+                </div>
+                </section>
             </div>
 
             <!-- Right column -->
