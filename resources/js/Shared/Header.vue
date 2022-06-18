@@ -37,6 +37,15 @@
 								<MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
 									<Link :href="item.href" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">{{ item.name }}</Link>
 								</MenuItem>
+
+								<MenuItem>
+									<Link  :href="route('logout')" method="post" class="block px-4 py-2 text-sm text-gray-700">
+										Sign out
+									</Link>
+								</MenuItem>
+
+								
+								
 							</MenuItems>
 						</transition>
 					</Menu>
@@ -150,7 +159,7 @@
 									</Link>
 								</div>
 							</div>
-							<div v-if="$page.props.auth" class="pt-4 pb-2">
+							<div class="pt-4 pb-2">
 								<div class="flex items-center px-5">
 									<div class="flex-shrink-0">
 										<img class="h-10 w-10 rounded-full" :src="user.imageUrl" alt="" />
@@ -168,11 +177,7 @@
 										class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800"
 										>{{ item.name }}
 									</Link>
-								</div>
-							</div>
-							<div v-else class="pt-4 pb-2">
-								<div class="mt-3 px-2 space-y-1">
-									<Link :href="route('logout')" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">
+									<Link  :href="route('logout')" method="post" as="button" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">
 										Sign out
 									</Link>
 								</div>
@@ -202,4 +207,8 @@ const navigation = [
 	{ name: "Account", href: route("account"), current: false, auth: true, admin: false }
 ]
 const userNavigation = [{ name: "Account", href: route("account"), auth: true, admin: false }]
+
+let logout = () => {
+  form.post('/logout');
+};
 </script>
