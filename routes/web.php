@@ -48,6 +48,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('logout', [LoginController::class, 'destroy'])->middleware('auth')->name('logout');
 
+    Route::get('/account', function () {
+        return "You should do something with this page";
+    })->name('account');
+
     /*
     |--------------------------------------------------------------------------
     | Admin Routes
